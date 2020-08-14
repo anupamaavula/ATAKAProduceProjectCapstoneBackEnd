@@ -1,74 +1,85 @@
 package com.tts.ecommerce.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-// import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "products")
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    // @NotNull(message = "Product name is required.")
-    private String name;
+	@Column(name = "name")
+	@NotNull(message = "Product name is required.")
+	private String name;
 
-    private Double price;
-    private int quantity;
-    private String inStock;
+	@Column(name = "price")
+	@NotNull(message = "Product price is required.")
+	private Double price;
 
-    public Product() {
-    }
+	@Column(name = "quantity")
+	@NotNull(message = "Product quantity is required.")
+	private int quantity;
 
-    public Product(Long id, String name, Double price, int quantity, String inStock) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.inStock = inStock;
-    }
+	@Column(name = "picture url")
+	@NotNull(message = "Product pictureUrl is required.")
+	private String pictureUrl;
 
-    public Long getId() {
-        return id;
-    }
+	public Product() {
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Product(@NotNull(message = "Product name is required") String name,
+			@NotNull(message = "Product price is required.") Double price,
+			@NotNull(message = "Product quantity is required.") int quantity,
+			@NotNull(message = "Product pictureUrl is required.") String pictureUrl) {
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.pictureUrl = pictureUrl;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public int getQuantity() {
-        return quantity;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+	public int getQuantity() {
+		return quantity;
+	}
 
-    public String getInStock() {
-        return inStock;
-    }
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
-    public void setInStock(String inStock) {
-        this.inStock = inStock;
-    }
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
+	}
 
 }
